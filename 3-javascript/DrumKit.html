@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Drum Kit</title>
+		<style type="text/css"/>
+		.key{
+			width:50px;
+			margin : 5px;
+			padding: 15px;
+			border: 4px black solid;
+			border-radius:5px;
+			float:left;
+			background-color:lightblue;
+			text-align:center;
+			transition: all 1.07s;
+		}
+		#keyBox{
+			padding:10px;
+			border:2px grey solid;
+			height: 200px;
+			width: 350px;
+			position:relative;
+			top:100px;
+			left:100px;
+		}
+		.playing{
+			transform:scale(2);
+			border-color:#ffc600;
+			box-shadow:0 0 10px #ffc600;
+		}
+		.changeBG{
+			background-color:pink;
+		}
+		.clearFloat{
+			clear:both;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="keyBox">
+			<div data-key="65" class="key" onclick="clickedKey()">A</div>
+			<div data-key="83" class="key" onclick="clickedKey()">S</div>
+			<div data-key="68" class="key" onclick="clickedKey()">D</div>
+			<div class="clearFloat"></div>
+			<div data-key="81" class="key" onclick="clickedKey()">Q</div>
+			<div data-key="87" class="key" onclick="clickedKey()">W</div>
+			<div data-key="69" class="key" onclick="clickedKey()">E</div>
+			<div class="clearFloat"></div>
+			<div data-key="90" class="key" onclick="clickedKey()">Z</div>
+			<div data-key="88" class="key" onclick="clickedKey()">X</div>
+			<div data-key="67" class="key" onclick="clickedKey()">C</div>
+		</div>
+		
+		
+		<audio data-key="65" src="sounds/sound0.wav"/>
+		<audio data-key="83" src="sounds/sound1.wav"/>
+		<audio data-key="68" src="sounds/sound2.wav"/>
+		<audio data-key="81" src="sounds/sound3.wav"/>
+		<audio data-key="87" src="sounds/sound4.wav"/>
+		<audio data-key="69" src="sounds/sound5.wav"/>
+		<audio data-key="90" src="sounds/sound6.wav"/>
+		<audio data-key="88" src="sounds/sound7.wav"/>
+		<audio data-key="67" src="sounds/sound8.wav"/>
+		
+		<script type="text/javascript">
+			function clickedKey(e){
+			console.log(e);
+			}
+			
+			window.addEventListener('keydown',function(e){
+				const audio=document.querySelector(`audio[data-key="${e.keyCode}"]`);
+				console.log(audio);
+				if(!audio){
+					return ;
+				}
+
+				audio.play();
+				
+			})
+		</script>
+		
+	</body>
+	
+</html>

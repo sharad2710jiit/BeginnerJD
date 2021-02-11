@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Disappearing Circles</title>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		
+		<p>How Many Fingers im holding ...</p>
+		<select id="inputText">
+			<option>0</option>
+			<option>1</option>
+			<option selected>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+		</select>
+		
+		<button id="button">Guess Fingers</button>
+		
+		<button id="guessComputer">Guess By Computer</button>
+		<p id="para"></p>
+		
+		
+		<script type="text/javascript">
+			var randomNumber=Math.round(Math.random()*5);
+			
+			document.getElementById('button').onclick=function(){
+				var inputText=document.getElementById('inputText').value;
+				var ans="";
+				alert(randomNumber);
+				if(inputText==randomNumber){
+				ans='** Got it yaaay **';}
+				else{ans='Sorry missed';}
+			document.getElementById('para').innerHTML="<h1>"+ans+"</h1>"
+			} 
+			
+			document.getElementById('guessComputer').onclick=function(){
+				
+				var guessFlag=false;
+				var numberOfGues=0;
+				while(!guessFlag){
+					guessFlag=doAGuess(randomNumber);
+					numberOfGues++;
+				}
+				
+			document.getElementById('para').innerHTML=
+			document.getElementById('para').innerHTML+
+			"<h2>Computer guessed in "+numberOfGues+" guesses : # "+randomNumber+"</h2>"
+			} 
+			
+			function doAGuess(correctAns){
+				var guess=Math.round(Math.random()*5);
+				if(guess == correctAns){return true;}
+				else{return false;}
+			}
+			
+			
+		</script>
+	</body>
+	
+</html>
